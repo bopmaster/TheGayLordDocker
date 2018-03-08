@@ -14,11 +14,11 @@ RUN dpkg --add-architecture i386
 RUN apt-get update && apt-get install -y --no-install-recommends \
     bash \
     wget \
-    lib32z1 \
-    lib32ncurses5 \
-    libbz2-1.0:i386 \
+    libc6-i386 \
     lib32stdc++6 \
-    libgcc1 \
+    lib32gcc1 \
+    lib32ncurses5 \
+    lib32z1 \
     zlib1g-dev \
     libncurses5-dev \
     libsdl1.2debian \
