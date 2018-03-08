@@ -49,6 +49,6 @@ RUN mkdir -p /root/.android/ && touch /root/.android/repositories.cfg && \
 
 ADD packages.txt /sdk
 
-RUN sdkmanager "--update" && \
-    while read -r package; do PACKAGES="${PACKAGES}${package} "; done < /sdk/packages.txt && \
-    sdkmanager ${PACKAGES}
+RUN sdkmanager --package_file=/sdk/packages.txt --verbose
+
+RUN sdkmanager --update
