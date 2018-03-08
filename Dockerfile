@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     wget \
     lib32z1 \
     lib32ncurses5 \
-    lib32bz2-1.0:i386 \
+    libbz2-1.0:i386 \
     lib32stdc++6 \
     libgcc1 \
     zlib1g-dev \
