@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libsdl1.2debian \
     qemu-kvm \
     build-essential \
+    libglu1 \
     python2.7
 
 RUN echo "Downloading Gradle" \
