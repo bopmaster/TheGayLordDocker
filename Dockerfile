@@ -9,9 +9,14 @@ ENV GRADLE_VERSION 4.6
 
 ARG GRADLE_DOWNLOAD_SHA256=98bd5fd2b30e070517e03c51cbb32beee3e2ee1a84003a5a5d748996d4b1b915
 
+RUN dpkg --add-architecture i386
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
     bash \
     wget \
+    lib32z1 \
+    lib32ncurses5 \
+    lib32bz2-1.0:i386 \
     lib32stdc++6 \
     libgcc1 \
     zlib1g-dev \
@@ -20,8 +25,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     qemu-kvm \
     build-essential \
     libglu1 \
-    python2.7 \
-    python2.7-dev
+    python2.7
     
 RUN echo "Downloading Gradle" \
 	&& wget --no-verbose --output-document=gradle.zip "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip" \
