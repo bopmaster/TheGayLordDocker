@@ -25,7 +25,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     qemu-kvm \
     build-essential \
     libglu1 \
-    python2.7
+    python2.7 \
+    python2.7-dev
     
 RUN echo "Downloading Gradle" \
 	&& wget --no-verbose --output-document=gradle.zip "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip" \
