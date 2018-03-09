@@ -6,4 +6,4 @@ extras;m2repository;com;android;support;constraint;constraint-layout;1.0.1
 extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.1
 platform-tools
 platforms;android-26
-system-images;android-26;google_apis;x86_64
+system-images;android-26;google_apis;x86
