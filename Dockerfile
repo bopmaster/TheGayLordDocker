@@ -13,6 +13,7 @@ RUN dpkg --add-architecture i386
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     bash \
+    unzip \
     wget \
     openjdk-8-jdk \
     libc6-i386 \
@@ -27,11 +28,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     libglu1 \
     python2.7 \
-    python2.7-dev
+    python2.7-dev \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
     
 RUN echo "Downloading Gradle" \
 	&& wget --no-verbose --output-document=gradle.zip "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip" \
-	\
 	&& echo "Checking download hash" \
 	&& echo "${GRADLE_DOWNLOAD_SHA256} *gradle.zip" | sha256sum -c \
 	&& echo "Installing Gradle" \
