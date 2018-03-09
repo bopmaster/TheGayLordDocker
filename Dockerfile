@@ -1,4 +1,4 @@
-FROM openjdk:8-slim
+FROM ubuntu:16.04
 
 ENV SDK_TOOLS "3859397"
 ENV BUILD_TOOLS "26.0.2"
@@ -14,6 +14,7 @@ RUN dpkg --add-architecture i386
 RUN apt-get update && apt-get install -y --no-install-recommends \
     bash \
     wget \
+    openjdk-8-jdk \
     libc6-i386 \
     lib32stdc++6 \
     lib32gcc1 \
