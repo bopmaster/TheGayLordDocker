@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:17.10
 
 ENV SDK_TOOLS "3859397"
 ENV BUILD_TOOLS "26.0.2"
@@ -6,6 +6,7 @@ ENV TARGET_SDK "26"
 ENV ANDROID_HOME "/sdk"
 ENV GRADLE_HOME /gradle
 ENV GRADLE_VERSION 4.6
+ENV DEBIAN_FRONTEND noninteractive
 
 ARG GRADLE_DOWNLOAD_SHA256=98bd5fd2b30e070517e03c51cbb32beee3e2ee1a84003a5a5d748996d4b1b915
 
@@ -13,20 +14,18 @@ RUN dpkg --add-architecture i386
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     bash \
-    unzip \
-    wget \
-    openjdk-8-jdk \
+    bzip2 \
+    html2text \
     libc6-i386 \
     lib32stdc++6 \
     lib32gcc1 \
     lib32ncurses5 \
     lib32z1 \
-    zlib1g-dev \
-    qtbase5-dev \
-    qtdeclarative5-dev \
+    openjdk-8-jdk \
     qemu-kvm \
-    build-essential \
-    libglu1 \
+    unzip \
+    wget \
+    qemu-kvm \
     python2.7 \
     python2.7-dev \
     yamdi \
