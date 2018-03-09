@@ -22,13 +22,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     lib32ncurses5 \
     lib32z1 \
     zlib1g-dev \
-    libncurses5-dev \
-    libsdl1.2debian \
+    qtbase5-dev \
+    qtdeclarative5-dev \
     qemu-kvm \
     build-essential \
     libglu1 \
     python2.7 \
     python2.7-dev \
+    yamdi \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
     
 RUN echo "Downloading Gradle" \
