@@ -21,11 +21,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     lib32gcc1 \
     lib32ncurses5 \
     lib32z1 \
+    zlib1g-dev \
+    qtbase5-dev \
+    qtdeclarative5-dev \
     openjdk-8-jdk \
     qemu-kvm \
     unzip \
     wget \
     qemu-kvm \
+    build-essential \
+    libglu1 \
     python2.7 \
     python2.7-dev \
     yamdi \
