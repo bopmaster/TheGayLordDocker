@@ -12,7 +12,7 @@ ARG GRADLE_DOWNLOAD_SHA256=98bd5fd2b30e070517e03c51cbb32beee3e2ee1a84003a5a5d748
 
 RUN dpkg --add-architecture i386
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install -qqy --no-install-recommends \
     bash \
     bzip2 \
     html2text \
@@ -29,6 +29,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     unzip \
     wget \
     python2.7 \
+    build-essential \
     python2.7-dev \
     yamdi \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
