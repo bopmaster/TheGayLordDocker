@@ -62,16 +62,17 @@ RUN wget http://dl.google.com/android/repository/sdk-tools-linux-${SDK_TOOLS}.zi
 RUN mkdir -p "${ANDROID_HOME}/licenses/" && \
     printf "8933bad161af4178b1185d1a37fbf41ea5269c55\\nd56f5187479451eabf01fb78af6dfcb131a6481e" > "${ANDROID_HOME}/licenses/android-sdk-license" && \
     printf "84831b9409646a918e30573bab4c9c91346d8abd\\n504667f4c0de7af1a06de9f4b1727b84351f2910" > "${ANDROID_HOME}/licenses/android-sdk-preview-license"
-    
-ADD packages.txt /sdk
-
-RUN sdkmanager --package_file=/sdk/packages.txt --verbose
 
 RUN mkdir -p /root/.android/ && touch /root/.android/repositories.cfg && \
-    sdkmanager --update
-
+    sdkmanager --update    
+    
 RUN yes | sdkmanager "--licenses"
 
+ADD packages.txt /sdk
+
+RUN while read -r package; do PACKAGES="${PACKAGES}${package} "; done < /sdk/packages.txt && \
+    "${ANDROID_HOME}/tools/bin/sdkmanager" ${PACKAGES}
+    
 RUN mkdir /sdk/tools/keymaps && \
     touch /sdk/tools/keymaps/en-us
 
