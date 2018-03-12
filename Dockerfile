@@ -28,9 +28,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     qemu-kvm \
     unzip \
     wget \
-    qemu-kvm \
-    build-essential \
-    libglu1 \
     python2.7 \
     python2.7-dev \
     yamdi \
@@ -58,8 +55,9 @@ RUN wget http://dl.google.com/android/repository/sdk-tools-linux-${SDK_TOOLS}.zi
     ln -s "${ANDROID_HOME}/tools/emulator" /usr/bin/emulator
 
 # Install SDK Packages
-RUN mkdir -p /root/.android/ && touch /root/.android/repositories.cfg && \
-    yes | sdkmanager "--licenses"
+RUN mkdir -p "${ANDROID_HOME}/licenses/" && \
+    printf "8933bad161af4178b1185d1a37fbf41ea5269c55\\nd56f5187479451eabf01fb78af6dfcb131a6481e" > "${ANDROID_HOME}/licenses/android-sdk-license" && \
+    printf "84831b9409646a918e30573bab4c9c91346d8abd\\n504667f4c0de7af1a06de9f4b1727b84351f2910" > "${ANDROID_HOME}/licenses/android-sdk-preview-license"
     
 RUN wget -nv https://pypi.python.org/packages/1e/8e/40c71faa24e19dab555eeb25d6c07efbc503e98b0344f0b4c3131f59947f/vnc2flv-20100207.tar.gz && tar -zxvf vnc2flv-20100207.tar.gz && rm vnc2flv-20100207.tar.gz && \
     cd vnc2flv-20100207 && ln -s /usr/bin/python2.7 /usr/bin/python && python setup.py install
@@ -74,5 +72,8 @@ COPY wait-for-avd-boot.sh /helpers
 ADD packages.txt /sdk
 
 RUN sdkmanager --package_file=/sdk/packages.txt --verbose
+
+RUN mkdir -p /root/.android/ && touch /root/.android/repositories.cfg && \
+    yes | sdkmanager "--licenses"
 
 RUN sdkmanager --update
